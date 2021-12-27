@@ -1,0 +1,20 @@
+[npm]
+npm install --> To install everything from a existing package.json file
+npm init -y --> To create new package.json file
+npm install --save express --> to install express and save dependancy to package.json
+npm install --only=production --> Install only production dependencies
+npm start --> add script in package.json as(node index.json) and start a node.js application(industry wide)(used in production)
+node index.js
+npm install --save-dev nodemon --> to save as a dev dependency. nodemon for live-reload during development
+npx nodemon index.js --> to run index.js using nodemon instead of "node index.js". npx is a useful command that comes with Node.js and allows us to run installed dependencies from the command line instead of installing modules globally.
+npm run start:dev ---> note the difference between "npm run start:dev and npm start/npm test". need to add "nodemon index.js" to package.json (used in dev region)
+
+[Docker Compose]
+
+docker-compose up --build ---> [The up command causes Docker Compose to boot our microservices application. The --build argument makes Docker Compose build each of our images before instantiating containers from these.if you change some code in your microservice and invoke the up command again, it won’t include your changes unless you use the --build argument.]
+
+docker-compose ps ---->[difference between "docker ps" and "docker-compose ps"]
+
+docker-compose stop
+
+docker-compose down && docker-compose up --build ----->[We can use both the up and down commands in combination to easily reboot our application when we want to get updated code or dependencies into it]

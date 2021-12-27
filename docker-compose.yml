@@ -1,0 +1,13 @@
+version: '3'
+services:
+  videoStreaming:
+    image: videoStreaming
+    build:
+        context: ./videoStreaming
+        dockerfile: Dockerfile
+    container_name: videoStreaming
+    ports:
+      - "4000:80"
+    environment:
+      - PORT=80
+    restart: "no"  
