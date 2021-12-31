@@ -18,3 +18,9 @@ docker-compose ps ---->[difference between "docker ps" and "docker-compose ps"]
 docker-compose stop
 
 docker-compose down && docker-compose up --build ----->[We can use both the up and down commands in combination to easily reboot our application when we want to get updated code or dependencies into it]
+
+
+
+[To Close Running Local host Ports on windows]
+netstat -ano | findstr :<PORT>
+taskkill /PID <PID> /F

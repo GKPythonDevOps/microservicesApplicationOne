@@ -1,11 +1,10 @@
-
 //****** Constants for hello world **********
 const express = require('express') //Loads the Express library for use in our code
 const http = require("http")
 const app = express() // Creates an instance of an Express app 
 const port = 4001 // Our HTTP server will listen on port 3000.
 
-const VIDEO_STORAGE_HOST = "127.0.0.1"
+const VIDEO_STORAGE_HOST = "http://s2"
 const VIDEO_STORAGE_PORT = 4000
 //**********************************************
 
