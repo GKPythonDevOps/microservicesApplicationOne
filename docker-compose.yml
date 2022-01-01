@@ -1,13 +1,30 @@
 version: '3'
 services:
-  videoStreaming:
-    image: videoStreaming
-    build:
-        context: ./videoStreaming
-        dockerfile: Dockerfile
-    container_name: videoStreaming
+
+  aws-storage:
+    image: awsstorage
+    build: 
+      context: ./awsstrorage
+      dockerfile: Dockerfile
+    container_name: awsvideostorage
     ports:
-      - "4000:80"
+     - "4000:80"
     environment:
       - PORT=80
+    volumes:
+      - C:\Users\gouth\.aws\:/root/.aws:ro
+    restart: "no"
+
+  video-streaming:
+    image: video-streaming
+    build: 
+      context: ./videoStreaming
+      dockerfile: Dockerfile
+    container_name: videostreaming
+    ports:
+     - "4001:80"
+    environment:
+      - PORT=80
+      - VIDEO_STORAGE_HOST=awsvideostorage
+      - VIDEO_STORAGE_PORT=80
     restart: "no"  

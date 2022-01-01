@@ -1,7 +1,16 @@
-
 const AWS = require('aws-sdk')
 const express = require('express')
 const app = express()
+
+const PORT = process.env.PORT;
+
+if (!process.env.PORT) {
+  throw new Error("Please specify the port number for the HTTP server with the environment variable PORT.");
+}
+// const STORAGE_ACCOUNT_NAME = process.env.STORAGE_ACCOUNT_NAME;
+// const STORAGE_ACCESS_KEY = process.env.STORAGE_ACCESS_KEY;
+
+// console.log(`Serving videos from Azure storage account ${STORAGE_ACCOUNT_NAME}.`);
 
 
 app.get('/video', (req, res) => {
@@ -28,7 +37,7 @@ app.get('/video', (req, res) => {
   });
 });
     
-port = 4000;
-app.listen(port, () => {
-  console.log(`Microservice listening on port ${port}, point your browser at http://localhost:${port}/video`);
+
+app.listen(PORT, () => {
+  console.log(`Microservice listening on port ${PORT}, point your browser at http://localhost:${PORT}/video in docker container and http://localhost:4000/video in local host`);
 });

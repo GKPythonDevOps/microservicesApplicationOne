@@ -2,10 +2,25 @@
 const express = require('express') //Loads the Express library for use in our code
 const http = require("http")
 const app = express() // Creates an instance of an Express app 
-const port = 4001 // Our HTTP server will listen on port 3000.
 
-const VIDEO_STORAGE_HOST = "http://s2"
-const VIDEO_STORAGE_PORT = 4000
+if (!process.env.PORT) {
+    throw new Error("Please specify the port number for the HTTP server with the environment variable PORT.");
+}
+
+if (!process.env.VIDEO_STORAGE_HOST) {
+    throw new Error("Please specify the host name for the video storage microservice in variable VIDEO_STORAGE_HOST.");
+}
+
+if (!process.env.VIDEO_STORAGE_PORT) {
+    throw new Error("Please specify the port number for the video storage microservice in variable VIDEO_STORAGE_PORT.");
+}
+
+
+const PORT = process.env.PORT; // Our HTTP server will listen on port 3000.
+
+const VIDEO_STORAGE_HOST = process.env.VIDEO_STORAGE_HOST;
+// ""http://awsvideostorage""
+const VIDEO_STORAGE_PORT = process.env.VIDEO_STORAGE_PORT;
 //**********************************************
 
 //****** Constants for video stream **********
@@ -54,8 +69,8 @@ app.get("/video", (req, res) => {
 // Starts the HTTP server.
 //
 
-app.listen(port, () => {
-  console.log(`Microservice listening on port ${port}, point your browser at http://localhost:${port}/video`);
+app.listen(PORT, () => {
+  console.log(`Microservice listening on port ${PORT}, point your browser at http://localhost:${PORT}/video in docker container and http://localhost:4001/video in local host`);
 });
 
 //**********************************************************************************************************************
